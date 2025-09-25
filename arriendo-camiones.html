@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arriendo de Camiones Seguros y Flexibles en Chile - IXXOS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GENERALES Y RESET --- */
+        :root {
+            --primary-color: #ffb400;
+            --dark-color: #000000;
+            --light-color: #ffffff;
+            --text-color: #333;
+            --gray-bg: #f8f9fa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2 {
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- HEADER (Estilo replicado de ixxos.cl) --- */
+        .main-header {
+            background-color: var(--light-color);
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        .main-nav ul li {
+            margin-left: 25px;
+        }
+        .main-nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .main-nav ul li a:hover, .main-nav ul li a.active {
+            border-bottom-color: var(--primary-color);
+        }
+
+        /* --- STICKY CTA --- */
+        .sticky-cta {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            transform: translateY(-100%);
+            transition: transform 0.4s ease-in-out;
+        }
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+        .sticky-cta .container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://ixxos.cl/wp-content/uploads/2025/05/Operacion-Aguas-Andinas.webp');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-color);
+            padding: 100px 0;
+            text-align: left;
+        }
+        .hero .container {
+            max-width: 800px;
+            margin: 0; /* Align to left */
+            padding: 0 40px;
+        }
+        .hero .breadcrumbs {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        .hero .breadcrumbs a {
+            color: var(--light-color);
+            text-decoration: none;
+        }
+        .hero .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        .hero h1 {
+            color: var(--light-color);
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        /* --- SECTION 1: PROBLEMAS --- */
+        .problems-section {
+            background-color: var(--gray-bg);
+        }
+        .problems-section .intro-text {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .problem-item {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .problem-item svg {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        .problem-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .problems-section .cta-secondary {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .problems-section .cta-secondary .btn {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+        }
+
+        /* --- SECTION 2: TABLA DE USOS --- */
+        .operations-section .intro-text {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+        .operations-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        .operations-table th, .operations-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .operations-table th {
+            background-color: var(--gray-bg);
+            font-weight: 700;
+        }
+        .operations-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .operations-table .btn {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        /* --- SECTION 3: FLOTA --- */
+        .fleet-section {
+            background-color: var(--gray-bg);
+        }
+        .fleet-section .intro-text {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .fleet-card {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fleet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .fleet-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .fleet-card-content {
+            padding: 20px;
+        }
+        .fleet-card h3 {
+            font-size: 1.3rem;
+        }
+        .fleet-card .use-reco {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .fleet-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .fleet-card ul li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 5px;
+        }
+        .fleet-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* --- SECTION 4: COMO FUNCIONA --- */
+        .how-it-works-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+        }
+        .how-it-works-timeline::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 5%;
+            width: 90%;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+        .timeline-step {
+            text-align: center;
+            width: 18%;
+            position: relative;
+            z-index: 2;
+        }
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+            font-weight: 700;
+            font-size: 1.5rem;
+            border: 3px solid var(--light-color);
+            box-shadow: 0 0 0 3px var(--primary-color);
+        }
+        .timeline-step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        /* --- SECTION 5: DIFERENCIALES --- */
+        .differentiators-section {
+            background-color: #2c3e50;
+            color: var(--light-color);
+        }
+        .differentiators-section h2 {
+            color: var(--light-color);
+        }
+        .differentiators-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .differentiator-item svg {
+            width: 50px;
+            height: 50px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .differentiator-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- SECTION 6: PRUEBA SOCIAL --- */
+        .social-proof-section .logos {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .social-proof-section .logos img {
+            height: 40px;
+            margin: 0 15px;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+        .social-proof-section .logos img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        .testimonial {
+            background-color: var(--gray-bg);
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            font-style: italic;
+            position: relative;
+            border-left: 5px solid var(--primary-color);
+        }
+        .testimonial::before {
+            content: '“';
+            font-size: 5rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: rgba(0,0,0,0.05);
+        }
+        .certifications {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* --- SECTION 7: FAQ --- */
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .faq-question {
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            padding-top: 0;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Adjust as needed */
+            padding-top: 15px;
+        }
+
+        /* --- SECTION 8: FORMULARIO FINAL (Estilo replicado de ixxos.cl) --- */
+        .final-cta-section {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://ixxos.cl/wp-content/uploads/2024/04/KHGS28-4.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-color);
+        }
+        .final-cta-section h2 {
+            color: var(--light-color);
+        }
+        .contact-form-wrapper {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 40px auto 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+        }
+        .form-group .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* --- FOOTER (Estilo replicado de ixxos.cl) --- */
+        .main-footer {
+            background-color: #212121;
+            color: #a9a9a9;
+            padding: 50px 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .footer-col h4 {
+            color: var(--light-color);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #a9a9a9;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+        .footer-col a:hover {
+            color: var(--primary-color);
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+
+        /* --- BOTONES FLOTANTES --- */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1001;
+            transition: transform 0.3s;
+        }
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+        .floating-whatsapp svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .container { padding: 0 15px; }
+            section { padding: 40px 0; }
+
+            .main-header .container { flex-direction: column; }
+            .main-nav ul { margin-top: 15px; }
+
+            .hero { text-align: center; }
+            .hero .container { margin: 0 auto; padding: 0 20px; }
+            .hero p { font-size: 1rem; }
+            
+            .problems-grid { grid-template-columns: 1fr; }
+            
+            .operations-table thead { display: none; }
+            .operations-table, .operations-table tbody, .operations-table tr, .operations-table td {
+                display: block;
+                width: 100%;
+            }
+            .operations-table tr {
+                margin-bottom: 20px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 10px;
+            }
+            .operations-table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+                border: none;
+            }
+            .operations-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-right: 10px;
+                font-weight: 700;
+                text-align: left;
+            }
+
+            .how-it-works-timeline { flex-direction: column; }
+            .how-it-works-timeline::before {
+                left: 25px;
+                top: 5%;
+                width: 2px;
+                height: 90%;
+            }
+            .timeline-step {
+                width: 100%;
+                text-align: left;
+                padding-left: 70px;
+                margin-bottom: 30px;
+            }
+            .step-icon {
+                position: absolute;
+                left: 0;
+            }
+
+            .differentiators-grid { grid-template-columns: 1fr; }
+            .differentiator-item { margin-bottom: 20px; }
+
+            .footer-grid { grid-template-columns: 1fr; }
+
+            .sticky-cta .btn {
+                display: none; /* Mobile sticky CTA could be a floating button instead */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ======================= HEADER ======================= -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">IXXOS</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Somos</a></li>
+                    <li><a href="#" class="active">Servicios</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ======================= STICKY CTA ON SCROLL ======================= -->
+    <div class="sticky-cta" id="sticky-cta">
+        <div class="container">
+            <a href="#formulario-final" class="btn">Cotiza tu arriendo ahora</a>
+        </div>
+    </div>
+
+
+    <!-- ======================= BODY CONTENT ======================= -->
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <a href="#">Inicio</a> > <a href="#">Servicios</a> > Arriendo de Camiones
+                </div>
+                <h1>Tu Operación No Se Detiene. Arriendo de Camiones Seguros y Flexibles en Chile</h1>
+                <p>Flota moderna y disponible de inmediato, con respaldo normativo y monitoreo en tiempo real. Diseñada para industrias que no pueden parar.</p>
+                <a href="#formulario-final" class="btn">Cotiza tu arriendo ahora</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 1: PROBLEMAS QUE RESOLVEMOS -->
+        <section class="problems-section">
+            <div class="container">
+                <h2>Sabemos lo que te preocupa</h2>
+                <p class="intro-text">Un jefe de operaciones o de logística no busca solo un camión: necesita continuidad, seguridad y costos controlados. En IXXOS resolvemos tus principales dolores.</p>
+                <div class="problems-grid">
+                    <div class="problem-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0011.667 0l3.181-3.183m-4.991-2.691v-4.992a2.25 2.25 0 00-2.25-2.25h-4.5a2.25 2.25 0 00-2.25 2.25v4.992m11.667 0l-3.181 3.183a8.25 8.25 0 01-11.667 0l-3.181-3.183" /></svg>
+                        <h3>Continuidad operacional</h3>
+                        <p>¿Falla en tu flota o un proyecto que se amplía? Contamos con camiones disponibles para entrega inmediata.</p>
+                    </div>
+                    <div class="problem-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+                        <h3>Seguridad normativa</h3>
+                        <p>Transporte de residuos peligrosos sin multas ni riesgos, con certificación y protocolos actualizados.</p>
+                    </div>
+                    <div class="problem-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414-.336.75-.75.75h-.75m0-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-15c-.621 0-1.125-.504-1.125-1.125V6.375c0-.621.504-1.125 1.125-1.125h.375m15-3v-.75a.75.75 0 00-.75-.75h-.75m0 1.5h.75a.75.75 0 01.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V4.5m1.5.75v-.75a.75.75 0 00-.75-.75h-.75M15 13.5m-3 0a3 3 0 106 0 3 3 0 00-6 0" /></svg>
+                        <h3>Eficiencia en costos</h3>
+                        <p>Arriendo flexible con o sin conductor, adaptado a tu presupuesto y operación.</p>
+                    </div>
+                </div>
+                <div class="cta-secondary">
+                     <a href="#formulario-final" class="btn">Habla con un asesor</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: QUÉ CAMIÓN NECESITAS -->
+        <section class="operations-section">
+            <div class="container">
+                <h2>¿Qué camión necesitas según tu operación?</h2>
+                <p class="intro-text">No todos los proyectos requieren lo mismo. Te orientamos con la opción adecuada según tu rubro y necesidad.</p>
+                <table class="operations-table">
+                    <thead>
+                        <tr>
+                            <th>Rubro</th>
+                            <th>Dolor del cliente</th>
+                            <th>Camión recomendado</th>
+                            <th>Beneficio</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Rubro">Transporte de combustibles y líquidos</td>
+                            <td data-label="Dolor del cliente">Riesgo de derrames, multas</td>
+                            <td data-label="Camión recomendado"><strong>Camión cisterna</strong></td>
+                            <td data-label="Beneficio">Seguridad operacional, bombas de descarga certificadas</td>
+                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rubro">Movimientos de tierra, residuos, escombros</td>
+                            <td data-label="Dolor del cliente">Descarga lenta, faena detenida</td>
+                            <td data-label="Camión recomendado"><strong>Camión tolva / basculante</strong></td>
+                            <td data-label="Beneficio">Descarga rápida, volumen alto</td>
+                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rubro">Residuos industriales peligrosos</td>
+                            <td data-label="Dolor del cliente">Necesidad de cumplir normativa</td>
+                            <td data-label="Camión recomendado"><strong>Camión ampliroll</strong></td>
+                            <td data-label="Beneficio">Flexibilidad con contenedores intercambiables</td>
+                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
+                        </tr>
+                         <tr>
+                            <td data-label="Rubro">Carga pesada o módulos</td>
+                            <td data-label="Dolor del cliente">Falta de equipos de izaje</td>
+                            <td data-label="Camión recomendado"><strong>Camión grúa pluma</strong></td>
+                            <td data-label="Beneficio">Carga y descarga autónoma</td>
+                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rubro">Abastecimiento de agua en faenas</td>
+                            <td data-label="Dolor del cliente">Necesidad de agua en terreno</td>
+                            <td data-label="Camión recomendado"><strong>Camión aljibe</strong></td>
+                            <td data-label="Beneficio">Distribución segura, control de polvo</td>
+                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: NUESTRA FLOTA -->
+        <section class="fleet-section">
+            <div class="container">
+                <h2>Nuestra flota disponible para arriendo</h2>
+                <p class="intro-text">Camiones listos para tu operación, con mantenimiento y seguro incluidos.</p>
+                <div class="fleet-grid">
+                    <div class="fleet-card">
+                        <img src="https://ixxos.cl/wp-content/uploads/2024/04/camion-arriendo-ixxos-costado.jpg" alt="[Imagen de un camión cisterna]">
+                        <div class="fleet-card-content">
+                            <h3>Camión Cisterna 20 m³</h3>
+                            <p class="use-reco">Transporte seguro de líquidos industriales</p>
+                            <ul>
+                                <li>Capacidad: 20.000 L</li>
+                                <li>Descarga: bomba de presión</li>
+                                <li>Año: 2022</li>
+                            </ul>
+                            <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                        </div>
+                    </div>
+                     <div class="fleet-card">
+                        <img src="https://ixxos.cl/wp-content/uploads/2025/05/111111.jpeg" alt="[Imagen de un camión tolva]">
+                        <div class="fleet-card-content">
+                            <h3>Camión Tolva</h3>
+                            <p class="use-reco">Ideal para movimiento de áridos y escombros</p>
+                            <ul>
+                                <li>Capacidad: 15 m³</li>
+                                <li>Descarga: Basculante</li>
+                                <li>Año: 2023</li>
+                            </ul>
+                            <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                        </div>
+                    </div>
+                     <div class="fleet-card">
+                        <img src="https://ixxos.cl/wp-content/uploads/2025/05/2foto-11.jpg" alt="[Imagen de un camión ampliroll]">
+                        <div class="fleet-card-content">
+                            <h3>Camión Ampliroll</h3>
+                            <p class="use-reco">Manejo flexible de residuos industriales</p>
+                            <ul>
+                                <li>Capacidad: Variable según contenedor</li>
+                                <li>Sistema: Hidráulico de gancho</li>
+                                <li>Año: 2022</li>
+                            </ul>
+                            <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: CÓMO FUNCIONA -->
+        <section class="how-it-works-section">
+            <div class="container">
+                <h2>Así de fácil funciona tu arriendo</h2>
+                <div class="how-it-works-timeline">
+                    <div class="timeline-step">
+                        <div class="step-icon">1</div>
+                        <h3>Solicita tu arriendo</h3>
+                        <p>Llena el formulario o contáctanos por WhatsApp.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-icon">2</div>
+                        <h3>Elige el camión</h3>
+                        <p>Te asesoramos según tu industria y operación.</p>
+                    </div>
+                     <div class="timeline-step">
+                        <div class="step-icon">3</div>
+                        <h3>Entrega inmediata</h3>
+                        <p>Coordinamos la llegada del camión a tu faena.</p>
+                    </div>
+                     <div class="timeline-step">
+                        <div class="step-icon">4</div>
+                        <h3>Monitoreo y soporte</h3>
+                        <p>Nuestra APP y equipo técnico aseguran operación continua.</p>
+                    </div>
+                     <div class="timeline-step">
+                        <div class="step-icon">5</div>
+                        <h3>Cierre transparente</h3>
+                        <p>Devolución y mantención sin sorpresas ocultas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: POR QUÉ ELEGIR IXXOS -->
+        <section class="differentiators-section">
+            <div class="container">
+                <h2>Lo que nos hace diferentes</h2>
+                <div class="differentiators-grid">
+                    <div class="differentiator-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+                        <h3>Seguridad operacional</h3>
+                        <p>Protocolos estrictos + seguros incluidos.</p>
+                    </div>
+                    <div class="differentiator-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+                        <h3>Tecnología avanzada</h3>
+                        <p>Monitorea tu arriendo con nuestra APP.</p>
+                    </div>
+                    <div class="differentiator-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <h3>Experiencia desde 2015</h3>
+                        <p>Confianza probada en minería e industria.</p>
+                    </div>
+                     <div class="differentiator-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+                        <h3>Sostenibilidad</h3>
+                        <p>Compromiso ambiental en cada operación.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: PRUEBA SOCIAL -->
+        <section class="social-proof-section">
+            <div class="container">
+                <h2>Ellos ya confían en IXXOS</h2>
+                <div class="logos">
+                    <!-- Placeholder logos. Replace with actual client logos -->
+                    <img src="https://placehold.co/150x60/f0f0f0/cccccc?text=Cliente+1" alt="[Logo de un cliente]">
+                    <img src="https://placehold.co/150x60/f0f0f0/cccccc?text=Cliente+2" alt="[Logo de un cliente]">
+                    <img src="https://placehold.co/150x60/f0f0f0/cccccc?text=Cliente+3" alt="[Logo de un cliente]">
+                    <img src="https://placehold.co/150x60/f0f0f0/cccccc?text=Cliente+4" alt="[Logo de un cliente]">
+                </div>
+                <div class="testimonial">
+                    <p>“Gracias a IXXOS aseguramos continuidad en plena temporada alta. Servicio rápido y seguro.”</p>
+                    <cite><strong>Jefe de Operaciones</strong> - Minera XYZ</cite>
+                </div>
+                 <div class="certifications">
+                    <!-- Placeholder for certifications -->
+                    <p><strong>Certificaciones:</strong> ISO 9001, Norma Residuos Peligrosos, etc.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: PREGUNTAS FRECUENTES -->
+        <section class="faq-section" style="background-color: var(--gray-bg);">
+            <div class="container" style="max-width: 800px;">
+                <h2>Resolvemos tus dudas antes de arrendar</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">¿Puedo arrendar con o sin conductor?</div>
+                        <div class="faq-answer">
+                            <p>Sí, ofrecemos ambas modalidades. Puedes arrendar solo el equipo o solicitar un servicio completo con uno de nuestros operadores certificados, listos para integrarse a tu faena.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <div class="faq-question">¿Qué pasa si el camión falla en faena?</div>
+                        <div class="faq-answer">
+                            <p>Nuestra prioridad es tu continuidad operacional. Contamos con un equipo de soporte técnico y, en caso de ser necesario, coordinamos el reemplazo de la unidad en el menor tiempo posible.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <div class="faq-question">¿Cuál es la cobertura geográfica de IXXOS?</div>
+                        <div class="faq-answer">
+                            <p>Tenemos cobertura a nivel nacional, desde Arica a Punta Arenas, con especial foco en operaciones para la gran minería e industria en las principales regiones del país.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <div class="faq-question">¿Incluye seguro y mantención?</div>
+                        <div class="faq-answer">
+                            <p>Sí, todos nuestros arriendos incluyen el seguro del vehículo y el plan de mantenimiento preventivo. Así te aseguras de operar un equipo en óptimas condiciones y sin preocupaciones adicionales.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <div class="faq-question">¿Cuál es el mínimo de días de arriendo?</div>
+                        <div class="faq-answer">
+                            <p>Nuestros planes son flexibles y se adaptan a tus necesidades, desde arriendos por días para emergencias hasta contratos mensuales o por proyecto. Contáctanos para encontrar la mejor solución para ti.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 8: CTA FINAL Y FORMULARIO -->
+        <section class="final-cta-section" id="formulario-final">
+            <div class="container">
+                <h2>Cotiza hoy y asegura la continuidad de tu operación</h2>
+                <div class="contact-form-wrapper">
+                    <form>
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email / Teléfono</label>
+                            <input type="text" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo-camion">Tipo de camión</label>
+                            <select id="tipo-camion" name="tipo-camion">
+                                <option value="">Selecciona un tipo...</option>
+                                <option value="cisterna">Camión Cisterna</option>
+                                <option value="tolva">Camión Tolva</option>
+                                <option value="ampliroll">Camión Ampliroll</option>
+                                <option value="grua-pluma">Camión Grúa Pluma</option>
+                                <option value="aljibe">Camión Aljibe</option>
+                                <option value="otro">Otro / No estoy seguro</option>
+                            </select>
+                        </div>
+                         <div class="form-group">
+                            <label for="tiempo-arriendo">Tiempo de arriendo</label>
+                            <input type="text" id="tiempo-arriendo" name="tiempo-arriendo" placeholder="Ej: 1 mes, 2 semanas, etc.">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn">Solicitar cotización</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>IXXOS</h4>
+                    <p>Desde 2015, IXXOS se especializa en la logística segura y eficiente del transporte de residuos y sustancias industriales y peligrosas.</p>
+                </div>
+                 <div class="footer-col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#">Transporte de Residuos</a></li>
+                        <li><a href="#">Distribución de Combustible</a></li>
+                        <li><a href="#">Arriendo de Camiones</a></li>
+                        <li><a href="#">Operación de Bodegas</a></li>
+                    </ul>
+                </div>
+                 <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p>Email: <a href="mailto:contacto@ixxos.cl">contacto@ixxos.cl</a></p>
+                    <p>Teléfono: <a href="tel:+56912345678">+56 9 1234 5678</a></p>
+                    <p>Dirección: Av. Ejemplo 123, Santiago, Chile.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 IXXOS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/56912345678" target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="white"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+
+    <script>
+        // --- SCRIPT PARA FAQ ACORDEÓN ---
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.faq-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    item.classList.toggle('active');
+                });
+            });
+
+            // --- SCRIPT PARA STICKY CTA ---
+            const stickyCTA = document.getElementById('sticky-cta');
+            const heroSection = document.querySelector('.hero');
+
+            if(heroSection && stickyCTA) {
+                 window.addEventListener('scroll', function() {
+                    if (window.scrollY > heroSection.offsetHeight) {
+                        stickyCTA.classList.add('visible');
+                    } else {
+                        stickyCTA.classList.remove('visible');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
