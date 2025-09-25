@@ -122,6 +122,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .main-header .container {
             display: flex;
@@ -215,28 +216,7 @@
             background-color: var(--gray-bg);
         }
 
-        /* --- STICKY CTA --- */
-        .sticky-cta {
-            position: fixed;
-            top: 80px; /* Adjust based on header height */
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 10px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 999;
-            transform: translateY(-200%);
-            transition: transform 0.4s ease-in-out;
-        }
-        .sticky-cta.visible {
-            transform: translateY(0);
-        }
-        .sticky-cta .container {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
+        /* --- STICKY CTA (Removed) --- */
 
         /* --- HERO SECTION --- */
         .hero {
@@ -427,9 +407,6 @@
 
 
         /* --- SECTION 2: PROBLEMAS --- */
-        .problems-section {
-            /* background-color is white now as fleet is gray */
-        }
         .problems-section .intro-text {
             text-align: center;
             max-width: 700px;
@@ -665,9 +642,6 @@
             background-color: var(--primary-color);
         }
        
-        /* --- SECTION 8: CTA FINAL --- */
-        /* This section is now replaced by the new footer */
-
         /* --- NEW FOOTER --- */
         .site-footer {
             color: var(--light-color);
@@ -682,9 +656,13 @@
             padding: 50px;
             width: 50%;
         }
+        .footer-form-col .container, .footer-info-col .container {
+             max-width: 100%; /* Override default container width */
+        }
         .footer-form-col h3 {
             font-size: 2.5rem;
             margin-bottom: 10px;
+            text-align: left;
         }
          .footer-form-col h3::after {
             content: '';
@@ -713,6 +691,8 @@
             border: none;
             border-radius: 4px;
             background-color: var(--light-color);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
         }
         .footer-form .form-group-inline {
             display: flex;
@@ -754,9 +734,10 @@
         .footer-socials a:hover {
             color: var(--primary-color);
         }
-        .footer-socials svg {
+        .footer-socials svg, .footer-address svg {
             width: 20px;
             height: 20px;
+            flex-shrink: 0;
         }
         .footer-middle-section {
             background-color: var(--light-color);
@@ -825,10 +806,6 @@
             text-decoration: none;
         }
 
-
-        /* --- FOOTER --- */
-        /* Old footer styles removed */
-
         /* --- BOTONES FLOTANTES --- */
         .floating-whatsapp {
             position: fixed;
@@ -856,11 +833,8 @@
 
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 992px) {
-            .problems-grid, .differentiators-grid, .testimonial-grid {
+            .problems-grid, .differentiators-grid {
                 grid-template-columns: 1fr 1fr;
-            }
-            .testimonial-grid {
-                grid-template-columns: 1fr;
             }
             .footer-form-col, .footer-info-col {
                 width: 100%;
@@ -883,7 +857,7 @@
             .hero .container { margin: 0 auto; padding: 0 20px; }
             .hero p { font-size: 1rem; }
             
-            .problems-grid, .differentiators-grid, .testimonial-grid, .differentiators-grid {
+            .problems-grid, .differentiators-grid, .differentiators-grid {
                  grid-template-columns: 1fr; 
             }
             
@@ -938,11 +912,8 @@
             }
              .footer-form .form-group-inline {
                 flex-direction: column;
+                gap: 0;
              }
-
-            .sticky-cta {
-                display: none;
-            }
         }
 
     </style>
@@ -988,13 +959,7 @@
         </div>
     </header>
 
-    <!-- ======================= STICKY CTA ON SCROLL ======================= -->
-    <div class="sticky-cta" id="sticky-cta">
-        <div class="container">
-            <a href="#formulario-final" class="btn">Cotizar ahora</a>
-        </div>
-    </div>
-
+    <!-- STICKY CTA REMOVED AS REQUESTED -->
 
     <!-- ======================= BODY CONTENT ======================= -->
     <main>
@@ -1272,7 +1237,7 @@
                     <div class="differentiator-item">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
                         <h3>Tecnología avanzada</h3>
-                        <p>Monitorea tu arriendo con nuestra APP.</p>
+                        <p>Monitorea tu arriendo con nostra APP.</p>
                     </div>
                     <div class="differentiator-item">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -1380,8 +1345,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- SECCIÓN 8: CTA FINAL Y FORMULARIO is now the footer -->
 
     </main>
 
@@ -1508,19 +1471,6 @@
                 });
             });
 
-            // --- SCRIPT PARA STICKY CTA ---
-            const stickyCTA = document.getElementById('sticky-cta');
-            const header = document.querySelector('.main-header');
-            if(header && stickyCTA) {
-                 window.addEventListener('scroll', function() {
-                    if (window.scrollY > header.offsetHeight) {
-                        stickyCTA.classList.add('visible');
-                    } else {
-                        stickyCTA.classList.remove('visible');
-                    }
-                });
-            }
-            
             // --- SCRIPT PARA SCROLL ANIMATIONS ---
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
