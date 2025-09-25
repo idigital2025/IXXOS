@@ -220,7 +220,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://ixxos.cl/wp-content/uploads/2025/05/Operacion-Aguas-Andinas.webp');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/hero-background.webp');
             background-size: cover;
             background-position: center;
             color: var(--light-color);
@@ -267,7 +267,7 @@
             transform: translateY(0);
         }
 
-        /* --- SECTION 1: FLOTA --- */
+        /* --- SECTION 1: FLOTA CAROUSEL --- */
         .fleet-section {
             background-color: var(--gray-bg);
         }
@@ -276,10 +276,16 @@
             max-width: 700px;
             margin: 0 auto 40px auto;
         }
+        .fleet-carousel-wrapper {
+            position: relative;
+            padding: 0 40px; /* Space for arrows */
+        }
+        .fleet-carousel-container {
+             overflow: hidden;
+        }
         .fleet-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
         }
         .fleet-card {
             background-color: var(--light-color);
@@ -288,6 +294,47 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
+            margin: 0 15px; /* Gap between cards */
+            flex-shrink: 0;
+            width: calc((100% / 3) - 30px); /* 3 cards desktop */
+        }
+        .fleet-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+        .fleet-arrow:hover {
+            background-color: var(--primary-color);
+        }
+        .fleet-prev { left: -10px; }
+        .fleet-next { right: -10px; }
+        .fleet-dots-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .fleet-dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #ccc;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .fleet-dot.active {
+            background-color: var(--primary-color);
         }
         
         .card-carousel {
@@ -844,6 +891,9 @@
             .problems-grid, .differentiators-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .fleet-card {
+                width: calc((100% / 2) - 30px); /* 2 cards on tablet */
+            }
             .footer-form-col, .footer-info-col {
                 width: 100%;
             }
@@ -867,6 +917,19 @@
             
             .problems-grid, .differentiators-grid, .differentiators-grid {
                  grid-template-columns: 1fr; 
+            }
+            .fleet-card {
+                width: calc(100% - 30px); /* 1 card on mobile */
+            }
+            .fleet-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+            .fleet-prev { left: 0; }
+            .fleet-next { right: 0; }
+            .fleet-carousel-wrapper {
+                padding: 0;
             }
             
             .operations-table thead { display: none; }
@@ -936,7 +999,7 @@
     <header class="main-header">
         <div class="container">
             <a href="#" class="logo-link">
-                <img src="https://ixxos.cl/wp-content/uploads/2024/03/cropped-IXXOS-Transporte-y-Logistica-1-1.png" alt="IXXOS Logo" class="logo">
+                <img src="img/logo.png" alt="IXXOS Logo" class="logo">
             </a>
             <nav class="main-nav">
                 <ul>
@@ -980,7 +1043,7 @@
                 <div class="breadcrumbs">
                     <a href="#">Inicio</a> > <a href="#">Servicios</a> > Arriendo de Camiones
                 </div>
-                <h1>Tu Operación No Se Detiene. Arriendo de Camiones Seguros y Flexibles en Chile</h1>
+                <h1>¡Qué tu operación no se detenga! Arriendo de Camiones Seguros y Flexibles en Chile</h1>
                 <p>Flota moderna y disponible de inmediato, con respaldo normativo y monitoreo en tiempo real. Diseñada para industrias que no pueden parar.</p>
                 <div class="hero-buttons">
                     <a href="#nuestra-flota" class="btn">Conocer más</a>
@@ -994,145 +1057,152 @@
             <div class="container">
                 <h2>Nuestra flota disponible para arriendo</h2>
                 <p class="intro-text">Camiones listos para tu operación, con mantenimiento y seguro incluidos.</p>
-                <div class="fleet-grid">
-                    <!-- Card 1 -->
-                    <div class="fleet-card">
-                        <div class="card-carousel">
-                            <div class="carousel-inner">
-                                <img src="https://ixxos.cl/wp-content/uploads/2024/04/camion-arriendo-ixxos-costado.jpg" class="carousel-img active" alt="Camión Cisterna Mercedes Benz 2012">
-                                <img src="https://ixxos.cl/wp-content/uploads/2024/04/Camion-arriendo-ixxos.jpg" class="carousel-img" alt="Vista frontal Camión Cisterna Mercedes Benz 2012">
+                <div class="fleet-carousel-wrapper">
+                    <div class="fleet-carousel-container">
+                        <div class="fleet-grid">
+                            <!-- Card 1 -->
+                            <div class="fleet-card">
+                                <div class="card-carousel">
+                                    <div class="carousel-inner">
+                                        <img src="img/camion-cisterna-2012-1.jpg" class="carousel-img active" alt="Camión Cisterna Mercedes Benz 2012">
+                                        <img src="img/camion-cisterna-2012-2.jpg" class="carousel-img" alt="Vista frontal Camión Cisterna Mercedes Benz 2012">
+                                    </div>
+                                    <button class="carousel-arrow prev">&lt;</button>
+                                    <button class="carousel-arrow next">&gt;</button>
+                                </div>
+                                <div class="fleet-card-content">
+                                    <h3>Camión Cisterna Mercedes Benz 2012</h3>
+                                    <p class="use-reco">Transporte seguro de combustibles y líquidos industriales</p>
+                                    <ul>
+                                        <li>Capacidad: 10.000 L (2 compartimentos de 5.000 L)</li>
+                                        <li>Tracción: 4x2</li>
+                                        <li>Sistema de descarga: bomba de presión</li>
+                                        <li>Apto para carga en plantas industriales</li>
+                                        <li>Año: 2012</li>
+                                        <li>Arriendo con o sin conductor (desde abril 2024)</li>
+                                    </ul>
+                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                                </div>
                             </div>
-                            <button class="carousel-arrow prev">&lt;</button>
-                            <button class="carousel-arrow next">&gt;</button>
-                        </div>
-                        <div class="fleet-card-content">
-                            <h3>Camión Cisterna Mercedes Benz 2012</h3>
-                            <p class="use-reco">Transporte seguro de combustibles y líquidos industriales</p>
-                            <ul>
-                                <li>Capacidad: 10.000 L (2 compartimentos de 5.000 L)</li>
-                                <li>Tracción: 4x2</li>
-                                <li>Sistema de descarga: bomba de presión</li>
-                                <li>Apto para carga en plantas industriales</li>
-                                <li>Año: 2012</li>
-                                <li>Arriendo con o sin conductor (desde abril 2024)</li>
-                            </ul>
-                            <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                            <!-- Card 2 -->
+                            <div class="fleet-card">
+                                 <div class="card-carousel">
+                                    <div class="carousel-inner">
+                                        <img src="img/camion-cisterna-2018-1.jpg" class="carousel-img active" alt="Camión Cisterna Mercedes Benz 2018 4x4">
+                                        <img src="img/camion-cisterna-2018-2.jpg" class="carousel-img" alt="Detalle Camión Cisterna Mercedes Benz 2018 4x4">
+                                    </div>
+                                    <button class="carousel-arrow prev">&lt;</button>
+                                    <button class="carousel-arrow next">&gt;</button>
+                                </div>
+                                <div class="fleet-card-content">
+                                    <h3>Camión Cisterna Mercedes Benz 2018</h3>
+                                    <p class="use-reco">Transporte seguro de combustibles y líquidos industriales</p>
+                                    <ul>
+                                        <li>Capacidad: 10.000 L (2 compartimentos de 5.000 L)</li>
+                                        <li>Tracción: 4x4 (ideal para terrenos exigentes)</li>
+                                        <li>Sistema de descarga: bomba de presión</li>
+                                        <li>Apto para carga en plantas industriales</li>
+                                        <li>Año: 2018</li>
+                                        <li>Arriendo con o sin conductor (desde abril 2024)</li>
+                                    </ul>
+                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="fleet-card">
+                                 <div class="card-carousel">
+                                    <div class="carousel-inner">
+                                        <img src="img/camion-ampliroll-1.jpg" class="carousel-img active" alt="Camión Ampliroll para residuos">
+                                        <img src="img/camion-ampliroll-2.png" class="carousel-img" alt="Detalle Camión Ampliroll">
+                                    </div>
+                                    <button class="carousel-arrow prev">&lt;</button>
+                                    <button class="carousel-arrow next">&gt;</button>
+                                </div>
+                                <div class="fleet-card-content">
+                                    <h3>Camión Ampliroll</h3>
+                                    <p class="use-reco">Flexibilidad para transporte de residuos industriales</p>
+                                    <ul>
+                                        <li>Contenedores intercambiables (open top o cerrados)</li>
+                                        <li>Diseñado para residuos peligrosos y no peligrosos</li>
+                                        <li>Ideal para minería, construcción e industria pesada</li>
+                                        <li>Tracción reforzada para operación en faena</li>
+                                        <li>Disponible con grúa pluma para carga y descarga autónoma de contenedores y residuos pesados</li>
+                                    </ul>
+                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                                </div>
+                            </div>
+                             <!-- Card 4 -->
+                            <div class="fleet-card">
+                                 <div class="card-carousel">
+                                    <div class="carousel-inner">
+                                        <img src="img/camion-recolector-1.png" class="carousel-img active" alt="Camión Recolector Carga Trasera">
+                                        <img src="img/camion-recolector-2.png" class="carousel-img" alt="Detalle Camión Recolector">
+                                    </div>
+                                    <button class="carousel-arrow prev">&lt;</button>
+                                    <button class="carousel-arrow next">&gt;</button>
+                                </div>
+                                <div class="fleet-card-content">
+                                    <h3>Camión Recolector Carga Trasera</h3>
+                                    <p class="use-reco">Recolección eficiente de residuos sólidos urbanos e industriales</p>
+                                    <ul>
+                                        <li>Sistema de compactación trasera de alta capacidad</li>
+                                        <li>Optimizado para rutas de recolección continua</li>
+                                        <li>Ideal para municipalidades y parques industriales</li>
+                                        <li>Año: 2020</li>
+                                    </ul>
+                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                                </div>
+                            </div>
+                            <!-- Card 5 -->
+                            <div class="fleet-card">
+                                 <div class="card-carousel">
+                                    <div class="carousel-inner">
+                                        <img src="img/tolva-1.jpeg" class="carousel-img active" alt="Tolva Open Top">
+                                         <img src="img/tolva-2.png" class="carousel-img" alt="Detalle Tolva">
+                                    </div>
+                                    <button class="carousel-arrow prev">&lt;</button>
+                                    <button class="carousel-arrow next">&gt;</button>
+                                </div>
+                                <div class="fleet-card-content">
+                                    <h3>Tolvas Open Top / Multipropósito</h3>
+                                    <p class="use-reco">Transporte de áridos, escombros y materiales a granel</p>
+                                    <ul>
+                                        <li>Capacidad: 20–30 m³ (según modelo)</li>
+                                        <li>Descarga: trasera basculante</li>
+                                        <li>Construcción reforzada para faenas pesadas</li>
+                                        <li>Uso recomendado: minería, construcción, saneamiento ambiental</li>
+                                    </ul>
+                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                                </div>
+                            </div>
+                             <!-- Card 6 -->
+                            <div class="fleet-card">
+                                 <div class="card-carousel">
+                                    <div class="carousel-inner">
+                                        <img src="img/camion-grua-1.png" class="carousel-img active" alt="Camión Grúa Pluma">
+                                        <img src="img/camion-grua-2.png" class="carousel-img" alt="Detalle Camión Grúa Pluma">
+                                    </div>
+                                    <button class="carousel-arrow prev">&lt;</button>
+                                    <button class="carousel-arrow next">&gt;</button>
+                                </div>
+                                <div class="fleet-card-content">
+                                    <h3>Camión Grúa Pluma</h3>
+                                    <p class="use-reco">Izaje y transporte de maquinaria y cargas pesadas</p>
+                                    <ul>
+                                        <li>Capacidad de izaje: 8–10 toneladas (según modelo)</li>
+                                        <li>Alcance de pluma: 10–15 metros</li>
+                                        <li>Autonomía para carga y descarga sin grúas externas</li>
+                                        <li>Ideal para montaje industrial y obras civiles</li>
+                                        <li>Disponible con carrocería tipo tolva multipropósito para transportar materiales en faena</li>
+                                    </ul>
+                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Card 2 -->
-                    <div class="fleet-card">
-                         <div class="card-carousel">
-                            <div class="carousel-inner">
-                                <img src="https://ixxos.cl/wp-content/uploads/2024/04/KHGS28-1.jpg" class="carousel-img active" alt="Camión Cisterna Mercedes Benz 2018 4x4">
-                                <img src="https://ixxos.cl/wp-content/uploads/2024/04/KHGS28-4.jpg" class="carousel-img" alt="Detalle Camión Cisterna Mercedes Benz 2018 4x4">
-                            </div>
-                            <button class="carousel-arrow prev">&lt;</button>
-                            <button class="carousel-arrow next">&gt;</button>
-                        </div>
-                        <div class="fleet-card-content">
-                            <h3>Camión Cisterna Mercedes Benz 2018</h3>
-                            <p class="use-reco">Transporte seguro de combustibles y líquidos industriales</p>
-                            <ul>
-                                <li>Capacidad: 10.000 L (2 compartimentos de 5.000 L)</li>
-                                <li>Tracción: 4x4 (ideal para terrenos exigentes)</li>
-                                <li>Sistema de descarga: bomba de presión</li>
-                                <li>Apto para carga en plantas industriales</li>
-                                <li>Año: 2018</li>
-                                <li>Arriendo con o sin conductor (desde abril 2024)</li>
-                            </ul>
-                            <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                        </div>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="fleet-card">
-                         <div class="card-carousel">
-                            <div class="carousel-inner">
-                                <img src="https://ixxos.cl/wp-content/uploads/2025/05/2foto-11.jpg" class="carousel-img active" alt="Camión Ampliroll para residuos">
-                                <img src="https://placehold.co/600x400/cccccc/ffffff?text=Ampliroll+2" class="carousel-img" alt="Detalle Camión Ampliroll">
-                            </div>
-                            <button class="carousel-arrow prev">&lt;</button>
-                            <button class="carousel-arrow next">&gt;</button>
-                        </div>
-                        <div class="fleet-card-content">
-                            <h3>Camión Ampliroll</h3>
-                            <p class="use-reco">Flexibilidad para transporte de residuos industriales</p>
-                            <ul>
-                                <li>Contenedores intercambiables (open top o cerrados)</li>
-                                <li>Diseñado para residuos peligrosos y no peligrosos</li>
-                                <li>Ideal para minería, construcción e industria pesada</li>
-                                <li>Tracción reforzada para operación en faena</li>
-                                <li>Disponible con grúa pluma para carga y descarga autónoma de contenedores y residuos pesados</li>
-                            </ul>
-                            <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                        </div>
-                    </div>
-                     <!-- Card 4 -->
-                    <div class="fleet-card">
-                         <div class="card-carousel">
-                            <div class="carousel-inner">
-                                <img src="https://placehold.co/600x400/ffb400/000000?text=Recolector" class="carousel-img active" alt="Camión Recolector Carga Trasera">
-                                <img src="https://placehold.co/600x400/cccccc/ffffff?text=Recolector+2" class="carousel-img" alt="Detalle Camión Recolector">
-                            </div>
-                            <button class="carousel-arrow prev">&lt;</button>
-                            <button class="carousel-arrow next">&gt;</button>
-                        </div>
-                        <div class="fleet-card-content">
-                            <h3>Camión Recolector Carga Trasera</h3>
-                            <p class="use-reco">Recolección eficiente de residuos sólidos urbanos e industriales</p>
-                            <ul>
-                                <li>Sistema de compactación trasera de alta capacidad</li>
-                                <li>Optimizado para rutas de recolección continua</li>
-                                <li>Ideal para municipalidades y parques industriales</li>
-                                <li>Año: 2020</li>
-                            </ul>
-                            <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                        </div>
-                    </div>
-                    <!-- Card 5 -->
-                    <div class="fleet-card">
-                         <div class="card-carousel">
-                            <div class="carousel-inner">
-                                <img src="https://ixxos.cl/wp-content/uploads/2025/05/111111.jpeg" class="carousel-img active" alt="Tolva Open Top">
-                                 <img src="https://placehold.co/600x400/cccccc/ffffff?text=Tolva+2" class="carousel-img" alt="Detalle Tolva">
-                            </div>
-                            <button class="carousel-arrow prev">&lt;</button>
-                            <button class="carousel-arrow next">&gt;</button>
-                        </div>
-                        <div class="fleet-card-content">
-                            <h3>Tolvas Open Top / Multipropósito</h3>
-                            <p class="use-reco">Transporte de áridos, escombros y materiales a granel</p>
-                            <ul>
-                                <li>Capacidad: 20–30 m³ (según modelo)</li>
-                                <li>Descarga: trasera basculante</li>
-                                <li>Construcción reforzada para faenas pesadas</li>
-                                <li>Uso recomendado: minería, construcción, saneamiento ambiental</li>
-                            </ul>
-                            <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                        </div>
-                    </div>
-                     <!-- Card 6 -->
-                    <div class="fleet-card">
-                         <div class="card-carousel">
-                            <div class="carousel-inner">
-                                <img src="https://placehold.co/600x400/ffb400/000000?text=Grúa+Pluma" class="carousel-img active" alt="Camión Grúa Pluma">
-                                <img src="https://placehold.co/600x400/cccccc/ffffff?text=Grúa+2" class="carousel-img" alt="Detalle Camión Grúa Pluma">
-                            </div>
-                            <button class="carousel-arrow prev">&lt;</button>
-                            <button class="carousel-arrow next">&gt;</button>
-                        </div>
-                        <div class="fleet-card-content">
-                            <h3>Camión Grúa Pluma</h3>
-                            <p class="use-reco">Izaje y transporte de maquinaria y cargas pesadas</p>
-                            <ul>
-                                <li>Capacidad de izaje: 8–10 toneladas (según modelo)</li>
-                                <li>Alcance de pluma: 10–15 metros</li>
-                                <li>Autonomía para carga y descarga sin grúas externas</li>
-                                <li>Ideal para montaje industrial y obras civiles</li>
-                                <li>Disponible con carrocería tipo tolva multipropósito para transportar materiales en faena</li>
-                            </ul>
-                            <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                        </div>
-                    </div>
+                    <button class="fleet-arrow fleet-prev">&lt;</button>
+                    <button class="fleet-arrow fleet-next">&gt;</button>
+                    <div class="fleet-dots-container"></div>
                 </div>
             </div>
         </section>
@@ -1578,6 +1648,91 @@
             });
 
             startTestimonialCarousel();
+
+            // --- SCRIPT PARA FLEET CAROUSEL (NUEVO) ---
+            const fleetCarousel = document.querySelector('.fleet-carousel-wrapper');
+
+            if (fleetCarousel) {
+                const track = fleetCarousel.querySelector('.fleet-grid');
+                const slides = Array.from(track.children);
+                const nextButton = fleetCarousel.querySelector('.fleet-next');
+                const prevButton = fleetCarousel.querySelector('.fleet-prev');
+                const dotsContainer = fleetCarousel.querySelector('.fleet-dots-container');
+                
+                // Check if all necessary elements exist before proceeding
+                if (track && slides.length > 0 && nextButton && prevButton && dotsContainer) {
+
+                    let currentPage = 0;
+                    let slidesPerPage = getSlidesPerPage();
+                    let totalPages = Math.ceil(slides.length / slidesPerPage);
+    
+                    function getSlidesPerPage() {
+                        if (window.innerWidth <= 768) return 1;
+                        if (window.innerWidth <= 992) return 2;
+                        return 3;
+                    }
+    
+                    function setupCarousel() {
+                        slidesPerPage = getSlidesPerPage();
+                        totalPages = Math.ceil(slides.length / slidesPerPage);
+                        
+                        dotsContainer.innerHTML = '';
+                        for (let i = 0; i < totalPages; i++) {
+                            const button = document.createElement('button');
+                            button.classList.add('fleet-dot');
+                            button.addEventListener('click', () => {
+                                currentPage = i;
+                                updateCarousel();
+                            });
+                            dotsContainer.appendChild(button);
+                        }
+                        
+                        currentPage = 0;
+                        updateCarousel();
+                    }
+    
+                    function updateCarousel() {
+                        const containerWidth = fleetCarousel.querySelector('.fleet-carousel-container').offsetWidth;
+                        const gap = 30; // Corresponds to margin
+                        let offset = 0;
+                        
+                        if(slidesPerPage === 1) {
+                             offset = -currentPage * (containerWidth + gap);
+                        } else {
+                             offset = -currentPage * ( (containerWidth / slidesPerPage) * slidesPerPage + gap);
+                        }
+
+                        track.style.transform = `translateX(${offset}px)`;
+    
+                        const dots = Array.from(dotsContainer.children);
+                        dots.forEach((dot, index) => {
+                            dot.classList.toggle('active', index === currentPage);
+                        });
+    
+                        prevButton.style.display = currentPage === 0 ? 'none' : 'block';
+                        nextButton.style.display = currentPage === totalPages - 1 ? 'none' : 'block';
+                    }
+    
+                    nextButton.addEventListener('click', () => {
+                        if (currentPage < totalPages - 1) {
+                            currentPage++;
+                            updateCarousel();
+                        }
+                    });
+    
+                    prevButton.addEventListener('click', () => {
+                        if (currentPage > 0) {
+                            currentPage--;
+                            updateCarousel();
+                        }
+                    });
+    
+                    window.addEventListener('resize', setupCarousel);
+    
+                    // Initial setup
+                    setupCarousel();
+                } 
+            }
 
         });
     </script>
