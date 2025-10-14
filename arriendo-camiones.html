@@ -267,86 +267,51 @@
             transform: translateY(0);
         }
 
-        /* --- SECTION 1: FLOTA CAROUSEL --- */
-        .fleet-section {
+        /* --- SECTION 1: AVAILABLE TRUCK --- */
+        .available-truck-section {
             background-color: var(--gray-bg);
         }
-        .fleet-section .intro-text {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px auto;
+        .truck-block {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
         }
-        .fleet-carousel-wrapper {
+        .truck-block:last-child {
+            margin-bottom: 0;
+        }
+        .available-truck-gallery, .available-truck-info {
+            width: 50%;
+        }
+        .available-truck-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .available-truck-info ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+        .available-truck-info ul li {
+            padding-left: 20px;
             position: relative;
-            padding: 0 40px; /* Space for arrows */
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
-        .fleet-carousel-container {
-             overflow: hidden;
-        }
-        .fleet-grid {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .fleet-card {
-            background-color: var(--light-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            margin: 0 15px; /* Gap between cards */
-            flex-shrink: 0;
-            width: calc((100% / 3) - 30px); /* 3 cards desktop */
-        }
-        .fleet-arrow {
+        .available-truck-info ul li::before {
+            content: '✔';
+            color: var(--primary-color);
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 10;
-            transition: background-color 0.3s;
-        }
-        .fleet-arrow:hover {
-            background-color: var(--primary-color);
-        }
-        .fleet-prev { left: -10px; }
-        .fleet-next { right: -10px; }
-        .fleet-dots-container {
-            text-align: center;
-            margin-top: 25px;
-        }
-        .fleet-dot {
-            height: 12px;
-            width: 12px;
-            margin: 0 5px;
-            background-color: #ccc;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s ease;
-        }
-        .fleet-dot.active {
-            background-color: var(--primary-color);
-        }
-        
-        .card-carousel {
-            position: relative;
-            height: 220px;
+            left: 0;
         }
 
+        .card-carousel {
+            position: relative;
+            height: 300px; /* Increased height for better view */
+        }
         .carousel-inner {
             width: 100%;
             height: 100%;
         }
-
         .carousel-img {
             width: 100%;
             height: 100%;
@@ -355,12 +320,11 @@
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
             cursor: pointer;
+            border-radius: 8px;
         }
-
         .carousel-img.active {
             opacity: 1;
         }
-
         .carousel-arrow {
             position: absolute;
             top: 50%;
@@ -389,42 +353,6 @@
         .carousel-arrow.prev { left: 10px; }
         .carousel-arrow.next { right: 10px; }
         
-        .fleet-card-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .fleet-card-content .btn {
-            display: block;
-            width: fit-content;
-            margin: 0 auto;
-        }
-        .fleet-card-content h3 {
-            font-size: 1.3rem;
-        }
-        .fleet-card-content .use-reco {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        .fleet-card-content ul {
-            list-style: none;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        .fleet-card-content ul li {
-            padding-left: 20px;
-            position: relative;
-            margin-bottom: 8px;
-        }
-        .fleet-card-content ul li::before {
-            content: '✔';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-        }
-
         /* --- IMAGE MODAL --- */
         .image-modal {
             display: none;
@@ -456,250 +384,51 @@
             cursor: pointer;
         }
         .close-modal:hover { color: #bbb; }
-
-
-        /* --- SECTION 2: PROBLEMAS --- */
-        .problems-section .intro-text {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px auto;
-        }
-        .problems-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            text-align: center;
-        }
-        .problem-item {
-            background-color: var(--light-color);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-        }
-        .problem-item svg {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        .problem-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        .problems-section .cta-secondary {
-            text-align: center;
-            margin-top: 40px;
-        }
         
-        /* --- SECTION 3: COMO FUNCIONA --- */
-        .how-it-works-section {
-            background-color: var(--gray-bg);
-        }
-        .how-it-works-timeline {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            margin-top: 50px;
-        }
-        .how-it-works-timeline::before {
-            content: '';
-            position: absolute;
-            top: 25px;
-            left: 5%;
-            width: 90%;
-            height: 2px;
-            background-color: #ddd;
-            z-index: 1;
-        }
-        .timeline-step {
-            text-align: center;
-            width: 18%;
-            position: relative;
-            z-index: 2;
-            background-color: var(--gray-bg);
-            padding: 0 10px;
-        }
-        .step-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: var(--dark-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px auto;
-            font-weight: 700;
-            font-size: 1.5rem;
-            border: 3px solid var(--gray-bg);
-            box-shadow: 0 0 0 3px var(--primary-color);
-        }
-        .timeline-step h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
+        /* --- TIMELINE, FAQ, ETC. STYLES (Unchanged) --- */
+        .how-it-works-section { background-color: var(--light-color); }
+        .how-it-works-timeline { display: flex; justify-content: space-between; position: relative; margin-top: 50px; }
+        .how-it-works-timeline::before { content: ''; position: absolute; top: 25px; left: 5%; width: 90%; height: 2px; background-color: #ddd; z-index: 1; }
+        .timeline-step { text-align: center; width: 18%; position: relative; z-index: 2; background-color: var(--light-color); padding: 0 10px; }
+        .step-icon { width: 50px; height: 50px; border-radius: 50%; background-color: var(--primary-color); color: var(--dark-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-weight: 700; font-size: 1.5rem; border: 3px solid var(--light-color); box-shadow: 0 0 0 3px var(--primary-color); }
+        .timeline-step h3 { font-size: 1.1rem; margin-bottom: 5px; }
 
-        /* --- SECTION 4: TABLA DE USOS --- */
-        .operations-section .intro-text {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px auto;
-        }
-        .operations-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            font-size: 0.95rem; /* Reduced font size */
-        }
-        .operations-table th, .operations-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .operations-table th {
-            background-color: var(--gray-bg);
-            font-weight: 700;
-        }
-        .operations-table tr:hover {
-            background-color: #f1f1f1;
-        }
-        .operations-table .btn {
-            padding: 8px 15px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        
-        /* --- SECTION 5: DIFERENCIALES --- */
-        .differentiators-section {
-            background-color: #2c3e50;
-            color: var(--light-color);
-        }
-        .differentiators-section h2 {
-            color: var(--light-color);
-        }
-        .differentiators-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-            text-align: center;
-        }
-        .differentiator-item svg {
-            width: 50px;
-            height: 50px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        .differentiator-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
+        .differentiators-section { background-color: #2c3e50; color: var(--light-color); }
+        .differentiators-section h2 { color: var(--light-color); }
+        .differentiators-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 40px; text-align: center; }
+        .differentiator-item svg { width: 50px; height: 50px; color: var(--primary-color); margin-bottom: 15px; }
+        .differentiator-item h3 { font-size: 1.2rem; margin-bottom: 10px; }
 
-        /* --- SECTION 6: FAQ --- */
-        .faq-item {
-            border-bottom: 1px solid #ddd;
-            padding: 15px 0;
-        }
-        .faq-question {
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-            padding-top: 0;
-        }
-        .faq-item.active .faq-answer {
-            max-height: 200px; /* Adjust as needed */
-            padding-top: 15px;
-        }
+        .faq-item { border-bottom: 1px solid #ddd; padding: 15px 0; }
+        .faq-question { font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: '+'; font-size: 1.5rem; transition: transform 0.3s; }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; padding-top: 0; }
+        .faq-item.active .faq-answer { max-height: 200px; padding-top: 15px; }
 
-        /* --- SECTION 7: PRUEBA SOCIAL --- */
-         .social-proof-section {
-            background-color: var(--gray-bg);
-        }
-        .testimonial-container {
-            max-width: 800px;
-            margin: 40px auto 0 auto;
-            position: relative;
-            overflow: hidden;
-            min-height: 250px; /* Adjust as needed */
-        }
-        .testimonial-item {
-            background-color: var(--light-color);
-            padding: 30px;
-            border-radius: 8px;
-            font-style: italic;
-            position: absolute;
-            width: 100%;
-            border-left: 5px solid var(--primary-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-            transform: translateX(20px);
-        }
+        .problems-section { background-color: var(--gray-bg); }
+        .problems-section .intro-text { text-align: center; max-width: 700px; margin: 0 auto 40px auto; }
+        .problems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; }
+        .problem-item { background-color: var(--light-color); padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .problem-item svg { width: 50px; height: 50px; margin-bottom: 15px; color: var(--primary-color); }
+        .problem-item h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .problems-section .cta-secondary { text-align: center; margin-top: 40px; }
 
-        .testimonial-item.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .testimonial-item::before {
-            content: '“';
-            font-size: 5rem;
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            color: rgba(0,0,0,0.05);
-            z-index: 1;
-        }
-        .testimonial-item p {
-            position: relative;
-            z-index: 2;
-        }
-        .testimonial-item cite {
-            display: block;
-            margin-top: 15px;
-            font-style: normal;
-            font-weight: 600;
-            text-align: right;
-        }
-
-        .testimonial-tabs {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .testimonial-tab {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #ccc;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .testimonial-tab.active {
-            background-color: var(--primary-color);
-        }
+         .social-proof-section { background-color: var(--light-color); }
+        .testimonial-container { max-width: 800px; margin: 40px auto 0 auto; position: relative; overflow: hidden; min-height: 200px; }
+        .testimonial-item { background-color: var(--light-color); padding: 30px; border-radius: 8px; font-style: italic; position: absolute; width: 100%; border-left: 5px solid var(--primary-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05); opacity: 0; transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; transform: translateX(20px); }
+        .testimonial-item.active { opacity: 1; transform: translateX(0); }
+        .testimonial-item::before { content: '“'; font-size: 5rem; position: absolute; top: -10px; left: 10px; color: rgba(0,0,0,0.05); z-index: 1; }
+        .testimonial-item p { position: relative; z-index: 2; }
+        .testimonial-item cite { display: block; margin-top: 15px; font-style: normal; font-weight: 600; text-align: right; }
+        .testimonial-tabs { text-align: center; margin-top: 20px; }
+        .testimonial-tab { display: inline-block; width: 12px; height: 12px; background-color: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: background-color 0.3s; }
+        .testimonial-tab.active { background-color: var(--primary-color); }
        
         /* --- NEW FOOTER --- */
         .site-footer {
             color: var(--light-color);
-            padding: 0; /* Remove padding from the main footer tag */
+            padding: 0;
         }
         .footer-top-section {
             display: flex;
@@ -748,12 +477,11 @@
         .footer-form .form-group {
             margin-bottom: 15px;
         }
-        .footer-form input, .footer-form textarea {
+        .footer-form input, .footer-form textarea, .footer-form select {
             width: 100%;
             padding: 12px;
-            border: none;
+            border: 1px solid #ccc;
             border-radius: 4px;
-            background-color: var(--light-color);
             font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
         }
@@ -891,8 +619,8 @@
             .problems-grid, .differentiators-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .fleet-card {
-                width: calc((100% / 2) - 30px); /* 2 cards on tablet */
+            .specialized-solutions-grid {
+                 grid-template-columns: 1fr;
             }
             .footer-form-col, .footer-info-col {
                 width: 100%;
@@ -915,80 +643,28 @@
             .hero .container { margin: 0 auto; padding: 0 20px; }
             .hero p { font-size: 1rem; }
             
-            .problems-grid, .differentiators-grid, .differentiators-grid {
+            .problems-grid, .differentiators-grid {
                  grid-template-columns: 1fr; 
             }
-            .fleet-card {
-                width: calc(100% - 30px); /* 1 card on mobile */
-            }
-            .fleet-arrow {
-                width: 36px;
-                height: 36px;
-                font-size: 1.2rem;
-            }
-            .fleet-prev { left: 0; }
-            .fleet-next { right: 0; }
-            .fleet-carousel-wrapper {
-                padding: 0;
-            }
             
-            .operations-table thead { display: none; }
-            .operations-table, .operations-table tbody, .operations-table tr, .operations-table td {
-                display: block;
+            .truck-block {
+                flex-direction: column;
+            }
+            .truck-block:nth-child(2) {
+                 flex-direction: column-reverse;
+            }
+            .available-truck-gallery, .available-truck-info {
                 width: 100%;
-            }
-            .operations-table tr {
-                margin-bottom: 20px;
-                border: 1px solid #ddd;
-                border-radius: 5px;
-                padding: 10px;
-            }
-            .operations-table td {
-                text-align: right;
-                padding-left: 50%;
-                position: relative;
-                border: none;
-            }
-            .operations-table td::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 10px;
-                width: 45%;
-                padding-right: 10px;
-                font-weight: 700;
-                text-align: left;
             }
 
             .how-it-works-timeline { flex-direction: column; }
-            .how-it-works-timeline::before {
-                left: 25px;
-                top: 5%;
-                width: 2px;
-                height: 90%;
-            }
-            .timeline-step {
-                width: 100%;
-                text-align: left;
-                padding-left: 70px;
-                margin-bottom: 30px;
-                background: none;
-            }
-            .step-icon {
-                position: absolute;
-                left: 0;
-            }
+            .how-it-works-timeline::before { left: 25px; top: 5%; width: 2px; height: 90%; }
+            .timeline-step { width: 100%; text-align: left; padding-left: 70px; margin-bottom: 30px; background: none; }
+            .step-icon { position: absolute; left: 0; }
             
-            .footer-form-col, .footer-info-col, .footer-info-top, .footer-info-bottom {
-                padding: 30px;
-            }
-             .footer-form .form-group-inline {
-                flex-direction: column;
-                gap: 0;
-                margin-bottom: 0;
-             }
-             .footer-form .form-group-inline .form-group {
-                margin-bottom: 15px;
-             }
+            .footer-form-col, .footer-info-col, .footer-info-top, .footer-info-bottom { padding: 30px; }
+             .footer-form .form-group-inline { flex-direction: column; gap: 0; margin-bottom: 0; }
+             .footer-form .form-group-inline .form-group { margin-bottom: 15px; }
         }
 
     </style>
@@ -1006,9 +682,7 @@
                     <li><a href="#">Inicio</a></li>
                     <li>
                         <a href="#">Somos 
-                            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
+                            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                         </a>
                         <ul class="dropdown">
                             <li><a href="#">Nuestra Historia</a></li>
@@ -1017,9 +691,7 @@
                     </li>
                     <li>
                         <a href="#">Servicios 
-                             <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
+                             <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                         </a>
                          <ul class="dropdown">
                             <li><a href="#">¡Nuevo! IXXOS AI Automation</a></li>
@@ -1053,161 +725,64 @@
         </section>
 
         <!-- SECCIÓN 1: NUESTRA FLOTA -->
-        <section id="nuestra-flota" class="fleet-section animate-on-scroll">
+        <section id="nuestra-flota" class="available-truck-section animate-on-scroll">
             <div class="container">
-                <h2>Nuestra flota disponible para arriendo</h2>
-                <p class="intro-text">Camiones listos para tu operación, con mantenimiento y seguro incluidos.</p>
-                <div class="fleet-carousel-wrapper">
-                    <div class="fleet-carousel-container">
-                        <div class="fleet-grid">
-                            <!-- Card 1 -->
-                            <div class="fleet-card">
-                                <div class="card-carousel">
-                                    <div class="carousel-inner">
-                                        <img src="img/camion-cisterna-2012-1.jpg" class="carousel-img active" alt="Camión Cisterna Mercedes Benz 2012">
-                                        <img src="img/camion-cisterna-2012-2.jpg" class="carousel-img" alt="Vista frontal Camión Cisterna Mercedes Benz 2012">
-                                    </div>
-                                    <button class="carousel-arrow prev">&lt;</button>
-                                    <button class="carousel-arrow next">&gt;</button>
-                                </div>
-                                <div class="fleet-card-content">
-                                    <h3>Camión Cisterna Mercedes Benz 2012</h3>
-                                    <p class="use-reco">Transporte seguro de combustibles y líquidos industriales</p>
-                                    <ul>
-                                        <li>Capacidad: 10.000 L (2 compartimentos de 5.000 L)</li>
-                                        <li>Tracción: 4x2</li>
-                                        <li>Sistema de descarga: bomba de presión</li>
-                                        <li>Apto para carga en plantas industriales</li>
-                                        <li>Año: 2012</li>
-                                        <li>Arriendo con o sin conductor (desde abril 2024)</li>
-                                    </ul>
-                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                                </div>
+                <h2>Nuestro Equipo Disponible para Arriendo Inmediato</h2>
+                
+                <div class="truck-block">
+                    <div class="available-truck-gallery">
+                        <div class="card-carousel">
+                            <div class="carousel-inner">
+                                <img src="img/camion-aljibe-volkswagen-1.jpg" class="carousel-img active" alt="Camión Aljibe Volkswagen Constellation">
+                                <img src="img/camion-aljibe-volkswagen-2.jpg" class="carousel-img" alt="Vista lateral Camión Aljibe Volkswagen">
                             </div>
-                            <!-- Card 2 -->
-                            <div class="fleet-card">
-                                 <div class="card-carousel">
-                                    <div class="carousel-inner">
-                                        <img src="img/camion-cisterna-2018-1.jpg" class="carousel-img active" alt="Camión Cisterna Mercedes Benz 2018 4x4">
-                                        <img src="img/camion-cisterna-2018-2.jpg" class="carousel-img" alt="Detalle Camión Cisterna Mercedes Benz 2018 4x4">
-                                    </div>
-                                    <button class="carousel-arrow prev">&lt;</button>
-                                    <button class="carousel-arrow next">&gt;</button>
-                                </div>
-                                <div class="fleet-card-content">
-                                    <h3>Camión Cisterna Mercedes Benz 2018</h3>
-                                    <p class="use-reco">Transporte seguro de combustibles y líquidos industriales</p>
-                                    <ul>
-                                        <li>Capacidad: 10.000 L (2 compartimentos de 5.000 L)</li>
-                                        <li>Tracción: 4x4 (ideal para terrenos exigentes)</li>
-                                        <li>Sistema de descarga: bomba de presión</li>
-                                        <li>Apto para carga en plantas industriales</li>
-                                        <li>Año: 2018</li>
-                                        <li>Arriendo con o sin conductor (desde abril 2024)</li>
-                                    </ul>
-                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                                </div>
-                            </div>
-                            <!-- Card 3 -->
-                            <div class="fleet-card">
-                                 <div class="card-carousel">
-                                    <div class="carousel-inner">
-                                        <img src="img/camion-ampliroll-1.jpg" class="carousel-img active" alt="Camión Ampliroll para residuos">
-                                        <img src="img/camion-ampliroll-2.png" class="carousel-img" alt="Detalle Camión Ampliroll">
-                                    </div>
-                                    <button class="carousel-arrow prev">&lt;</button>
-                                    <button class="carousel-arrow next">&gt;</button>
-                                </div>
-                                <div class="fleet-card-content">
-                                    <h3>Camión Ampliroll</h3>
-                                    <p class="use-reco">Flexibilidad para transporte de residuos industriales</p>
-                                    <ul>
-                                        <li>Contenedores intercambiables (open top o cerrados)</li>
-                                        <li>Diseñado para residuos peligrosos y no peligrosos</li>
-                                        <li>Ideal para minería, construcción e industria pesada</li>
-                                        <li>Tracción reforzada para operación en faena</li>
-                                        <li>Disponible con grúa pluma para carga y descarga autónoma de contenedores y residuos pesados</li>
-                                    </ul>
-                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                                </div>
-                            </div>
-                             <!-- Card 4 -->
-                            <div class="fleet-card">
-                                 <div class="card-carousel">
-                                    <div class="carousel-inner">
-                                        <img src="img/camion-recolector-1.png" class="carousel-img active" alt="Camión Recolector Carga Trasera">
-                                        <img src="img/camion-recolector-2.png" class="carousel-img" alt="Detalle Camión Recolector">
-                                    </div>
-                                    <button class="carousel-arrow prev">&lt;</button>
-                                    <button class="carousel-arrow next">&gt;</button>
-                                </div>
-                                <div class="fleet-card-content">
-                                    <h3>Camión Recolector Carga Trasera</h3>
-                                    <p class="use-reco">Recolección eficiente de residuos sólidos urbanos e industriales</p>
-                                    <ul>
-                                        <li>Sistema de compactación trasera de alta capacidad</li>
-                                        <li>Optimizado para rutas de recolección continua</li>
-                                        <li>Ideal para municipalidades y parques industriales</li>
-                                        <li>Año: 2020</li>
-                                    </ul>
-                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                                </div>
-                            </div>
-                            <!-- Card 5 -->
-                            <div class="fleet-card">
-                                 <div class="card-carousel">
-                                    <div class="carousel-inner">
-                                        <img src="img/tolva-1.jpeg" class="carousel-img active" alt="Tolva Open Top">
-                                         <img src="img/tolva-2.png" class="carousel-img" alt="Detalle Tolva">
-                                    </div>
-                                    <button class="carousel-arrow prev">&lt;</button>
-                                    <button class="carousel-arrow next">&gt;</button>
-                                </div>
-                                <div class="fleet-card-content">
-                                    <h3>Tolvas Open Top / Multipropósito</h3>
-                                    <p class="use-reco">Transporte de áridos, escombros y materiales a granel</p>
-                                    <ul>
-                                        <li>Capacidad: 20–30 m³ (según modelo)</li>
-                                        <li>Descarga: trasera basculante</li>
-                                        <li>Construcción reforzada para faenas pesadas</li>
-                                        <li>Uso recomendado: minería, construcción, saneamiento ambiental</li>
-                                    </ul>
-                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                                </div>
-                            </div>
-                             <!-- Card 6 -->
-                            <div class="fleet-card">
-                                 <div class="card-carousel">
-                                    <div class="carousel-inner">
-                                        <img src="img/camion-grua-1.png" class="carousel-img active" alt="Camión Grúa Pluma">
-                                        <img src="img/camion-grua-2.png" class="carousel-img" alt="Detalle Camión Grúa Pluma">
-                                    </div>
-                                    <button class="carousel-arrow prev">&lt;</button>
-                                    <button class="carousel-arrow next">&gt;</button>
-                                </div>
-                                <div class="fleet-card-content">
-                                    <h3>Camión Grúa Pluma</h3>
-                                    <p class="use-reco">Izaje y transporte de maquinaria y cargas pesadas</p>
-                                    <ul>
-                                        <li>Capacidad de izaje: 8–10 toneladas (según modelo)</li>
-                                        <li>Alcance de pluma: 10–15 metros</li>
-                                        <li>Autonomía para carga y descarga sin grúas externas</li>
-                                        <li>Ideal para montaje industrial y obras civiles</li>
-                                        <li>Disponible con carrocería tipo tolva multipropósito para transportar materiales en faena</li>
-                                    </ul>
-                                    <a href="#formulario-final" class="btn">Cotizar este modelo</a>
-                                </div>
-                            </div>
+                            <button class="carousel-arrow prev">&lt;</button>
+                            <button class="carousel-arrow next">&gt;</button>
                         </div>
                     </div>
-                    <button class="fleet-arrow fleet-prev">&lt;</button>
-                    <button class="fleet-arrow fleet-next">&gt;</button>
-                    <div class="fleet-dots-container"></div>
+                    <div class="available-truck-info">
+                        <h3>Camión Aljibe Volkswagen Constellation 17.280 (2022)</h3>
+                        <p>Asegura el abastecimiento de agua y el control de polvo en tu operación con nuestro camión Volkswagen Constellation, listo para operar en las condiciones más exigentes.</p>
+                        <ul>
+                            <li>Capacidad: 10.000 L (2 compartimentos de 5.000 L)</li>
+                            <li>Tracción: 4x2</li>
+                            <li>Sistema de descarga: bomba de presión</li>
+                            <li>Apto para carga en plantas industriales</li>
+                            <li>Kilometraje: 185.109 kms</li>
+                        </ul>
+                        <a href="#formulario-final" class="btn">Cotizar Ahora</a>
+                    </div>
                 </div>
+
+                <div class="truck-block">
+                    <div class="available-truck-info">
+                        <h3>Camión Aljibe Volvo FMX (2022)</h3>
+                        <p>El camión de construcción más robusto que existe, facilitando tus tareas más difíciles, ya sea en carretera o no. Volvo FMX, listo para operar en las condiciones más exigentes.</p>
+                        <ul>
+                            <li>Capacidad: 10.000 L (2 compartimentos de 5.000 L)</li>
+                            <li>Tracción: 4x2</li>
+                            <li>Sistema de descarga: bomba de presión</li>
+                            <li>Apto para carga en plantas industriales</li>
+                            <li>Kilometraje: 262.200 kms</li>
+                        </ul>
+                        <a href="#formulario-final" class="btn">Cotizar Ahora</a>
+                    </div>
+                    <div class="available-truck-gallery">
+                        <div class="card-carousel">
+                            <div class="carousel-inner">
+                                <img src="img/camion-aljibe-volvo-1.jpg" class="carousel-img active" alt="Camión Aljibe Volvo FMX">
+                                <img src="img/camion-aljibe-volvo-2.jpg" class="carousel-img" alt="Vista lateral Camión Aljibe Volvo FMX">
+                            </div>
+                            <button class="carousel-arrow prev">&lt;</button>
+                            <button class="carousel-arrow next">&gt;</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- SECCIÓN 2: CÓMO FUNCIONA -->
+        <!-- SECCIÓN 3: CÓMO FUNCIONA -->
         <section class="how-it-works-section animate-on-scroll">
             <div class="container">
                 <h2>Así de fácil funciona tu arriendo</h2>
@@ -1238,69 +813,6 @@
                         <p>Devolución y mantención sin sorpresas ocultas.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 3: QUÉ CAMIÓN NECESITAS -->
-        <section class="operations-section animate-on-scroll">
-            <div class="container">
-                <h2>¿Qué camión necesitas según tu operación?</h2>
-                <p class="intro-text">No todos los proyectos requieren lo mismo. Te orientamos con la opción adecuada según tu rubro y necesidad.</p>
-                <table class="operations-table">
-                    <thead>
-                        <tr>
-                            <th>Camión recomendado</th>
-                            <th>Rubro</th>
-                            <th>Problema</th>
-                            <th>Beneficio</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Camión recomendado"><strong>Camión Cisterna 10.000 L (Mercedes Benz 2012 / 2018)</strong></td>
-                            <td data-label="Rubro">Transporte de combustibles y líquidos industriales</td>
-                            <td data-label="Problema">Riesgo de derrames, sanciones normativas, necesidad de compartimentos seguros</td>
-                            <td data-label="Beneficio">Seguridad operacional, descarga por bomba, compartimentos independientes</td>
-                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Camión recomendado"><strong>Camión Ampliroll</strong></td>
-                            <td data-label="Rubro">Gestión de residuos industriales y urbanos</td>
-                            <td data-label="Problema">Necesidad de cumplir normativa y manipular contenedores pesados</td>
-                            <td data-label="Beneficio">Flexibilidad con contenedores intercambiables, disponible con grúa pluma para carga y descarga autónoma</td>
-                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Camión recomendado"><strong>Camión Recolector de Carga Trasera</strong></td>
-                            <td data-label="Rubro">Recolección de residuos sólidos urbanos e industriales</td>
-                            <td data-label="Problema">Alta generación de residuos, necesidad de recolección continua</td>
-                            <td data-label="Beneficio">Compactación trasera, eficiencia en rutas de aseo</td>
-                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
-                        </tr>
-                         <tr>
-                            <td data-label="Camión recomendado"><strong>Tolvas Open Top / Multipropósito</strong></td>
-                            <td data-label="Rubro">Movimientos de tierra y materiales a granel</td>
-                            <td data-label="Problema">Descarga lenta, acumulación de áridos o escombros en faena</td>
-                            <td data-label="Beneficio">Descarga rápida y controlada, alto volumen (20–30 m³)</td>
-                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Camión recomendado"><strong>Camión Grúa Pluma</strong></td>
-                            <td data-label="Rubro">Izaje y transporte de cargas pesadas</td>
-                            <td data-label="Problema">Falta de equipos de izaje o costos adicionales por grúas externas</td>
-                            <td data-label="Beneficio">Autonomía en carga/descarga, capacidad de 8–10 ton, disponible con carrocería tipo tolva multipropósito para transporte en faena</td>
-                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Camión recomendado"><strong>Camión Aljibe (Cisterna adaptada a agua)</strong></td>
-                            <td data-label="Rubro">Abastecimiento de agua en faenas</td>
-                            <td data-label="Problema">Necesidad de agua para operación, control de polvo y limpieza en terreno</td>
-                            <td data-label="Beneficio">Transporte y distribución segura de agua potable o industrial</td>
-                            <td data-label="Acción"><a href="#formulario-final" class="btn">Cotiza este camión</a></td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
 
@@ -1406,15 +918,15 @@
                 <h2>Ellos ya confían en IXXOS</h2>
                 <div class="testimonial-container">
                     <div class="testimonial-item active">
-                        <p>“Necesitábamos un camión cisterna 4x4 de un día para otro por un imprevisto en faena. IXXOS respondió de inmediato y evitó que paráramos la producción. Un socio estratégico, sin duda.”</p>
+                        <p>“Requeríamos abastecimiento de agua en faena de forma inmediata. IXXOS coordinó el aljibe y mantuvo la operación sin detenciones.”</p>
                         <cite><strong>Carla Rojas</strong><br>Jefa de Logística, Constructora del Norte</cite>
                     </div>
                      <div class="testimonial-item">
-                        <p>“La gestión de residuos peligrosos es crítica. Arrendar un ampliroll con ellos nos dio la tranquilidad de cumplir con toda la normativa y operar de forma segura. El equipo es de primer nivel.”</p>
+                        <p>“La cobertura y respuesta fueron rápidas. El equipo técnico monitoreó el servicio durante toda la jornada.”</p>
                         <cite><strong>Miguel Soto</strong><br>Supervisor de Medio Ambiente, Industria Química Austral</cite>
                     </div>
                      <div class="testimonial-item">
-                        <p>“El servicio con conductor es excelente. El operador llegó capacitado y listo para trabajar, lo que nos ahorró tiempo y costos de inducción. Se nota la experiencia que tienen en el rubro.”</p>
+                        <p>“El servicio con conductor fue clave para partir en el día. Llegó capacitado y listo para operar.”</p>
                         <cite><strong>Fernanda Castro</strong><br>Gerente de Operaciones, Minera Andina</cite>
                     </div>
                 </div>
@@ -1445,6 +957,14 @@
                          <div class="form-group">
                             <input type="email" placeholder="Escribe tu email *" required>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-camion" style="font-weight: 600; margin-bottom: 5px; display: block;">Equipo a Cotizar</label>
+                        <select id="tipo-camion" name="tipo-camion">
+                            <option value="volkswagen">Camión Aljibe Volkswagen Constellation</option>
+                            <option value="volvo">Camión Aljibe Volvo FMX</option>
+                            <option value="otro">Otro / No estoy seguro</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <textarea placeholder="Escribe tu mensaje"></textarea>
@@ -1578,16 +1098,19 @@
                         img.classList.toggle('active', i === index);
                     });
                 }
+                
+                if(prevBtn && nextBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                        showImage(currentIndex);
+                    });
+    
+                    nextBtn.addEventListener('click', () => {
+                        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                        showImage(currentIndex);
+                    });
+                }
 
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-                    showImage(currentIndex);
-                });
-
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-                    showImage(currentIndex);
-                });
 
                 images.forEach(img => {
                     img.addEventListener('click', () => {
@@ -1648,91 +1171,6 @@
             });
 
             startTestimonialCarousel();
-
-            // --- SCRIPT PARA FLEET CAROUSEL (NUEVO) ---
-            const fleetCarousel = document.querySelector('.fleet-carousel-wrapper');
-
-            if (fleetCarousel) {
-                const track = fleetCarousel.querySelector('.fleet-grid');
-                const slides = Array.from(track.children);
-                const nextButton = fleetCarousel.querySelector('.fleet-next');
-                const prevButton = fleetCarousel.querySelector('.fleet-prev');
-                const dotsContainer = fleetCarousel.querySelector('.fleet-dots-container');
-                
-                // Check if all necessary elements exist before proceeding
-                if (track && slides.length > 0 && nextButton && prevButton && dotsContainer) {
-
-                    let currentPage = 0;
-                    let slidesPerPage = getSlidesPerPage();
-                    let totalPages = Math.ceil(slides.length / slidesPerPage);
-    
-                    function getSlidesPerPage() {
-                        if (window.innerWidth <= 768) return 1;
-                        if (window.innerWidth <= 992) return 2;
-                        return 3;
-                    }
-    
-                    function setupCarousel() {
-                        slidesPerPage = getSlidesPerPage();
-                        totalPages = Math.ceil(slides.length / slidesPerPage);
-                        
-                        dotsContainer.innerHTML = '';
-                        for (let i = 0; i < totalPages; i++) {
-                            const button = document.createElement('button');
-                            button.classList.add('fleet-dot');
-                            button.addEventListener('click', () => {
-                                currentPage = i;
-                                updateCarousel();
-                            });
-                            dotsContainer.appendChild(button);
-                        }
-                        
-                        currentPage = 0;
-                        updateCarousel();
-                    }
-    
-                    function updateCarousel() {
-                        const containerWidth = fleetCarousel.querySelector('.fleet-carousel-container').offsetWidth;
-                        const gap = 30; // Corresponds to margin
-                        let offset = 0;
-                        
-                        if(slidesPerPage === 1) {
-                             offset = -currentPage * (containerWidth + gap);
-                        } else {
-                             offset = -currentPage * ( (containerWidth / slidesPerPage) * slidesPerPage + gap);
-                        }
-
-                        track.style.transform = `translateX(${offset}px)`;
-    
-                        const dots = Array.from(dotsContainer.children);
-                        dots.forEach((dot, index) => {
-                            dot.classList.toggle('active', index === currentPage);
-                        });
-    
-                        prevButton.style.display = currentPage === 0 ? 'none' : 'block';
-                        nextButton.style.display = currentPage === totalPages - 1 ? 'none' : 'block';
-                    }
-    
-                    nextButton.addEventListener('click', () => {
-                        if (currentPage < totalPages - 1) {
-                            currentPage++;
-                            updateCarousel();
-                        }
-                    });
-    
-                    prevButton.addEventListener('click', () => {
-                        if (currentPage > 0) {
-                            currentPage--;
-                            updateCarousel();
-                        }
-                    });
-    
-                    window.addEventListener('resize', setupCarousel);
-    
-                    // Initial setup
-                    setupCarousel();
-                } 
-            }
 
         });
     </script>
